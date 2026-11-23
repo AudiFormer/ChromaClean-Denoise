@@ -1,0 +1,143 @@
+{
+ "camera": "E-M10MarkIV",
+ "units": "DN above black; variance = signal/gain + read_noise^2",
+ "iso": {
+  "200": {
+   "white_range": 3840.0,
+   "read_noise_dn": [
+    0.861,
+    0.861,
+    0.86,
+    0.859
+   ],
+   "dark_offset_dn": [
+    0.762,
+    0.784,
+    0.735,
+    0.711
+   ],
+   "row_noise_dn": 0.0734,
+   "gain_e_per_dn": 4.82834
+  },
+  "400": {
+   "white_range": 3841.0,
+   "read_noise_dn": [
+    1.431,
+    1.429,
+    1.431,
+    1.427
+   ],
+   "dark_offset_dn": [
+    0.633,
+    0.751,
+    0.645,
+    0.526
+   ],
+   "row_noise_dn": 0.1087,
+   "gain_e_per_dn": 2.40496
+  },
+  "800": {
+   "white_range": 3840.75,
+   "read_noise_dn": [
+    2.487,
+    2.49,
+    2.493,
+    2.492
+   ],
+   "dark_offset_dn": [
+    0.907,
+    0.254,
+    0.918,
+    0.704
+   ],
+   "row_noise_dn": 0.2366,
+   "gain_e_per_dn": 1.2021
+  },
+  "1600": {
+   "white_range": 3840.75,
+   "read_noise_dn": [
+    4.387,
+    4.39,
+    4.393,
+    4.385
+   ],
+   "dark_offset_dn": [
+    1.002,
+    0.663,
+    0.993,
+    0.586
+   ],
+   "row_noise_dn": 0.2613,
+   "gain_e_per_dn": 0.62231
+  },
+  "3200": {
+   "white_range": 3841.0,
+   "read_noise_dn": [
+    6.363,
+    6.349,
+    6.363,
+    6.368
+   ],
+   "dark_offset_dn": [
+    0.979,
+    0.832,
+    0.85,
+    1.004
+   ],
+   "row_noise_dn": 0.3767,
+   "gain_e_per_dn": 0.31598
+  },
+  "6400": {
+   "white_range": 3841.5,
+   "read_noise_dn": [
+    12.15,
+    12.113,
+    12.149,
+    12.116
+   ],
+   "dark_offset_dn": [
+    0.367,
+    0.081,
+    0.106,
+    -0.373
+   ],
+   "row_noise_dn": 0.6927,
+   "gain_e_per_dn": 0.14946
+  },
+  "12800": {
+   "white_range": 3843.0,
+   "read_noise_dn": [
+    24.203,
+    24.208,
+    24.204,
+    24.271
+   ],
+   "dark_offset_dn": [
+    0.229,
+    0.696,
+    0.506,
+    -0.218
+   ],
+   "row_noise_dn": 1.2854,
+   "gain_e_per_dn": 0.07624
+  },
+  "25600": {
+   "white_range": 3845.5,
+   "read_noise_dn": [
+    48.471,
+    48.327,
+    48.337,
+    48.474
+   ],
+   "dark_offset_dn": [
+    0.689,
+    0.991,
+    1.022,
+    -0.079
+   ],
+   "row_noise_dn": 2.5794,
+   "gain_e_per_dn": 0.03812,
+   "gain_note": "extrapolated from ISO 12800 (flat too dark)"
+  }
+ }
+}

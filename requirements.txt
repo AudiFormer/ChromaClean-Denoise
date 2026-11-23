@@ -1,0 +1,8 @@
+torch>=2.4          # CUDA build for training
+numpy>=2.0
+scipy>=1.13
+rawpy>=0.24
+ExifRead>=3.0
+onnx>=1.16
+onnxruntime>=1.18
+Pillow>=10

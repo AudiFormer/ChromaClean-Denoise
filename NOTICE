@@ -1,0 +1,27 @@
+ChromaClean Denoise
+Copyright (c) 2026 AudiFormer. Code and model weights: MIT OR Apache-2.0, at your option.
+
+Third-party material
+--------------------
+
+training/model.py and training/fetch_rpu.py come from Chromaforge (https://github.com/emmertex/chromaforge,
+tools/denoise-train), MIT License:
+  Copyright (c) the LightCraft contributors
+  Copyright (c) the PhotoCraft contributors
+  Copyright (c) the project contributors
+
+Training data credits
+---------------------
+
+- raw.pixls.us (https://raw.pixls.us/): raw files published under CC0 1.0 (public domain). Every file used is listed
+  in credits/raw_pixls_us_cc0.csv with its URL, camera and SHA-256. The before/after pictures in examples/ are made
+  from CC0 raws from the same site (examples/sources.json).
+
+- Cube++ (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/): E. Ershov, A. Savchik, I. Semenkov, N. Banic,
+  A. Belokopytov, D. Senshina, K. Koscevic, M. Subasic, S. Loncaric, "The Cube++ Illumination Estimation Dataset",
+  IEEE Access, 2020. https://zenodo.org/records/4153431. Pictures used are listed in
+  credits/cube_plus_plus_cc_by_4.csv. Changes: each raw was binned to one RGB value per 2x2 Bayer cell and cut into
+  256 x 256 crops; only ISO <= 400 pictures were used.
+
+- The author's own Sony A7 IV and Olympus E-M10 IV raws (training crops, real-noise test scenes and sensor
+  calibration frames). These pictures are not published; only the calibration numbers are (profiles/).

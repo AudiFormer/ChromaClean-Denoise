@@ -1,0 +1,14 @@
+# Runs Chromaforge's built-in denoiser on a raw tile file, for comparison benchmarks. Not part of the app.
+[package]
+name = "cf-bench"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+[workspace]
+
+[dependencies]
+lcc-denoise-core = { path = "../../../chromaforge/crates/denoise-core" }  # a chromaforge checkout (github.com/emmertex/chromaforge) beside this repository
+
+[profile.release]
+opt-level = 3

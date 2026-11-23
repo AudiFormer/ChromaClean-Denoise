@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+# data and build outputs live outside the repository (see training/common.py)
+*.npy
+*.u16
+*.onnx
+*.pt
+runs/
+pairs/
+export/
+target/

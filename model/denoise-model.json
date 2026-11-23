@@ -1,0 +1,21 @@
+{
+  "id": "chromaclean-bayer",
+  "name": "ChromaClean Denoise (Bayer)",
+  "version": "0.3.0",
+  "licence": {
+    "name": "MIT OR Apache-2.0",
+    "commercial": "yes",
+    "url": "https://opensource.org/license/mit",
+    "notice": "ChromaClean denoise model. Weights licensed MIT OR Apache-2.0. Trained on 25267 quality-checked low-ISO crops: the author's own Sony A7 IV and Olympus E-M10 IV raws (9206 crops), CC0 raws from raw.pixls.us (12328 crops, many cameras; contributors credited in credits/raw_pixls_us_cc0.csv of the source repository), and 3733 crops from the Cube++ dataset (CC BY 4.0: E. Ershov et al., \"The Cube++ Illumination Estimation Dataset\", IEEE Access 2020, https://zenodo.org/records/4153431), with synthetic sensor noise calibrated on a Sony A7 IV and Olympus E-M10 IV (dark frames and flat fields, numbers only)."
+  },
+  "source": "https://github.com/AudiFormer/ChromaClean-Denoise",
+  "sha256": "462c5aedaccf09c7ae1cf43f9e944a140b56b4303ed4232cd08697617b7195c9",
+  "sizeBytes": 31091398,
+  "provenance": "Trained with a 7.8 M-weight U-Net (upstream tools/denoise-train model.py) for 185000 steps on 25267 quality-checked low-ISO crops: the author's own Sony A7 IV and Olympus E-M10 IV raws (9206 crops), CC0 raws from raw.pixls.us (12328 crops, many cameras; contributors credited in credits/raw_pixls_us_cc0.csv of the source repository), and 3733 crops from the Cube++ dataset (CC BY 4.0: E. Ershov et al., \"The Cube++ Illumination Estimation Dataset\", IEEE Access 2020, https://zenodo.org/records/4153431); Poisson-Gaussian noise with row banding, calibrated on a Sony A7 IV; validated on real A7 IV and E-M10 IV ISO 200-25600 frames not used in training.",
+  "domain": "bayerToRgb",
+  "tile": 512,
+  "overlap": 64,
+  "gain": {
+    "kind": "none"
+  }
+}

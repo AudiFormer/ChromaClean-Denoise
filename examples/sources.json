@@ -1,0 +1,137 @@
+[
+ {
+  "iso": 20000,
+  "make": "Sony",
+  "model": "ILME-FX3",
+  "mode": "14bit (3:2)",
+  "url": "https://raw.pixls.us/getfile.php/6874/nice/Sony - ILME-FX3 - 14bit (3:2).ARW",
+  "sha256": "394ceb1a356be8b17f18dc013bfd22895ba6ec7195f578b9be1c2fd0d5ea4773",
+  "file": "Sony_ILME-FX3_ISO20000.ARW",
+  "example": "Sony_ILME-FX3_ISO20000.jpg",
+  "crop_cells": [
+   651,
+   506,
+   512
+  ]
+ },
+ {
+  "iso": 12800,
+  "make": "Sony",
+  "model": "ILCE-7C",
+  "mode": "14bit 14bit uncompressed (3:2)",
+  "url": "https://raw.pixls.us/getfile.php/4145/nice/Sony - ILCE-7C - 14bit 14bit uncompressed (3:2).ARW",
+  "sha256": "386ce0122687b802e8e57151d36643b830f87e59eed15b65c690d1032eb3b763",
+  "file": "Sony_ILCE-7C_ISO12800.ARW",
+  "example": "Sony_ILCE-7C_ISO12800.jpg",
+  "crop_cells": [
+   258,
+   1236,
+   512
+  ]
+ },
+ {
+  "iso": 6400,
+  "make": "Sony",
+  "model": "DSC-RX1R",
+  "mode": "14bit 14bit compressed (3:2)",
+  "url": "https://raw.pixls.us/getfile.php/4050/nice/Sony - DSC-RX1R - 14bit 14bit compressed (3:2).ARW",
+  "sha256": "1778498069d68feec90d824bfacbe7bc1cc69f1e74d1b187b96c40b22457e95f",
+  "file": "Sony_DSC-RX1R_ISO6400.ARW",
+  "example": "Sony_DSC-RX1R_ISO6400.jpg",
+  "crop_cells": [
+   742,
+   1112,
+   512
+  ]
+ },
+ {
+  "iso": 6400,
+  "make": "Panasonic",
+  "model": "DC-S5",
+  "mode": "3:2",
+  "url": "https://raw.pixls.us/getfile.php/6340/nice/Panasonic - DC-S5 - 3:2.RW2",
+  "sha256": "2f66bd27c6c677bc6def28dfd955a8d520b04654a2d08087d49f3b2823e97ed2",
+  "file": "Panasonic_DC-S5_ISO6400.RW2",
+  "example": "Panasonic_DC-S5_ISO6400.jpg",
+  "crop_cells": [
+   419,
+   1343,
+   512
+  ]
+ },
+ {
+  "iso": 6400,
+  "make": "Canon",
+  "model": "EOS Kiss X9",
+  "mode": "RAW (3:2)",
+  "url": "https://raw.pixls.us/getfile.php/2062/nice/Canon - EOS Kiss X9 - RAW (3:2).CR2",
+  "sha256": "f50cea4641c97c1154a214a686226ba900002f00f4f844af858ef80b9ec8dea6",
+  "file": "Canon_EOS_Kiss_X9_ISO6400.CR2",
+  "example": "Canon_EOS_Kiss_X9_ISO6400.jpg",
+  "crop_cells": [
+   1105,
+   778,
+   512
+  ]
+ },
+ {
+  "iso": 5000,
+  "make": "Canon",
+  "model": "EOS M3",
+  "mode": "RAW (3:2)",
+  "url": "https://raw.pixls.us/getfile.php/1002/nice/Canon - EOS M3 - RAW (3:2).CR2",
+  "sha256": "6f12a02a21f64b284328ee6d3b2d1bab4439720cad2e881adf3da72592128b11",
+  "file": "Canon_EOS_M3_ISO5000.CR2",
+  "example": "Canon_EOS_M3_ISO5000.jpg",
+  "crop_cells": [
+   1099,
+   2355,
+   512
+  ]
+ },
+ {
+  "iso": 4000,
+  "make": "Canon",
+  "model": "EOS 7D Mark II",
+  "mode": "16bit (3:2)",
+  "url": "https://raw.pixls.us/getfile.php/7023/nice/Canon - EOS 7D Mark II - 16bit (3:2).dng",
+  "sha256": "090e01f9a7a860b2f2f0ead770b8a9ba3b17ea98dc1997835c6bda2fc0a2ae54",
+  "file": "Canon_EOS_7D_Mark_II_ISO4000.dng",
+  "example": "Canon_EOS_7D_Mark_II_ISO4000.jpg",
+  "crop_cells": [
+   894,
+   989,
+   512
+  ]
+ },
+ {
+  "iso": 3200,
+  "make": "Pentax",
+  "model": "K-7",
+  "mode": "12bit (3:2)",
+  "url": "https://raw.pixls.us/getfile.php/827/nice/Pentax - K-7 - 12bit (3:2).DNG",
+  "sha256": "f441c36678dfca4f38e25a580f4f8485d78d8067a054153bc36be71e56c92386",
+  "file": "Pentax_K-7_ISO3200.DNG",
+  "example": "Pentax_K-7_ISO3200.jpg",
+  "crop_cells": [
+   571,
+   185,
+   512
+  ]
+ },
+ {
+  "iso": 3200,
+  "make": "Panasonic",
+  "model": "DC-G9",
+  "mode": "4:3",
+  "url": "https://raw.pixls.us/getfile.php/2348/nice/Panasonic - DC-G9 - 4:3.RW2",
+  "sha256": "16282357ce0143ff7d36737f82074662db7aa0790ecd309196f406baf0f586a7",
+  "file": "Panasonic_DC-G9_ISO3200.RW2",
+  "example": "Panasonic_DC-G9_ISO3200.jpg",
+  "crop_cells": [
+   356,
+   278,
+   512
+  ]
+ }
+]
