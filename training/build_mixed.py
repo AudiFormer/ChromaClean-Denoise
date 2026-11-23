@@ -15,6 +15,12 @@ Pass 1 measures every candidate; cut-offs are set from the distribution (`--stat
 writes the kept crops: clean_rgb.npy (N,3,256,256) float16 (clipped cells > 1) and clean_rgb.json with a
 source tag and sampling weight per crop, so each source gets a set share of the batches.
 
+Upgrades: base_rgb.npy / base_rgb.json (if present in the work folder) is a frozen, already gated training set
+from an earlier build (0.3.0's set: 25,267 crops). Its crops enter again as candidates, under their original
+source tags, so the new set is the old one plus whatever new material is in rpu/, cube/ and clean_crops.npy.
+Only put NEW material there (new inventory for build_clean.py; fetch_rpu.py and cube_fetch.py skip files they
+already did), or crops will be counted twice.
+
 Usage: python build_mixed.py [--stats]"""
 import csv, json, os, random, sys
 import numpy as np
@@ -62,6 +68,8 @@ def metrics(c):
 
 
 def own_candidates():
+    if not os.path.exists(f'{HERE}/clean_crops.json'):
+        return
     meta = json.load(open(f'{HERE}/clean_crops.json'))
     own = np.load(f'{HERE}/clean_crops.npy', mmap_mode='r')
     tags = []
@@ -100,20 +108,37 @@ def cube_candidates():
             yield ('cube', k, i), 'cube', 'Canon EOS 550D/600D', np.asarray(a[i]).astype(np.float32) / 65534.0
 
 
+def base_candidates():
+    """the frozen, already gated set from an earlier build"""
+    if not os.path.exists(f'{HERE}/base_rgb.json'):
+        return
+    meta = json.load(open(f'{HERE}/base_rgb.json'))
+    a = np.load(f'{HERE}/base_rgb.npy', mmap_mode='r')
+    for i in range(meta['count']):
+        yield ('base', i), meta['source'][i], meta['camera'][i], np.asarray(a[i]).astype(np.float32)
+
+
 def main():
     stats = '--stats' in sys.argv
     cand = []
-    for gen in (own_candidates(), rpu_candidates(), cube_candidates()):
+    for gen in (base_candidates(), own_candidates(), rpu_candidates(), cube_candidates()):
         for key, src, cam, c in gen:
             m = metrics(c); m.update(key=key, src=src, cam=cam)
             cand.append(m)
             if len(cand) % 2000 == 0:
                 print(len(cand), 'measured', flush=True)
-    noise_all = np.array([m['noise'] for m in cand if np.isfinite(m['noise']) and m['noise'] > 0])
-    noise_cut = min(float(np.percentile(noise_all, NOISE_PCT)), NOISE_ABS)
-    textured = np.array([m['sharp'] for m in cand if m['texture'] > np.median([x['texture'] for x in cand])])
-    blur_cut = float(np.percentile(textured, BLUR_PCT))
-    tex_med = float(np.median([x['texture'] for x in cand]))
+    # cut-offs come from the new candidates only; the base set already passed an earlier gate (re-gating it by
+    # percentile would drop another slice on every build). With nothing new, the base set's own cut-offs apply.
+    new = [m for m in cand if m['key'][0] != 'base']
+    if new:
+        noise_all = np.array([m['noise'] for m in new if np.isfinite(m['noise']) and m['noise'] > 0])
+        noise_cut = min(float(np.percentile(noise_all, NOISE_PCT)), NOISE_ABS) if len(noise_all) else NOISE_ABS
+        tex_med = float(np.median([x['texture'] for x in new]))
+        textured = np.array([m['sharp'] for m in new if m['texture'] > tex_med])
+        blur_cut = float(np.percentile(textured, BLUR_PCT)) if len(textured) else 0.0
+    else:
+        bc = json.load(open(f'{HERE}/base_rgb.json'))['cutoffs']
+        noise_cut, blur_cut, tex_med = bc['noise_a'], bc['sharp'], bc['texture_median']
     for src in SHARE:
         ms = [m for m in cand if m['src'] == src]
         if not ms:
@@ -126,6 +151,8 @@ def main():
     print(f'cut-offs: noise a > {noise_cut:.2e}, sharpness < {blur_cut:.2f} on crops with texture > {tex_med:.4f}')
 
     def keep(m):
+        if m['key'][0] == 'base':
+            return None
         if m['clip'] > MAX_CLIP or m['median'] < MIN_MEDIAN or not np.isfinite(m['noise']):
             return 'dark/clipped/unmeasurable'
         if m['noise'] > noise_cut:
@@ -156,11 +183,14 @@ def main():
         return
     N = len(kept)
     mm = np.lib.format.open_memmap(f'{HERE}/clean_rgb.npy', mode='w+', dtype=np.float16, shape=(N, 3, S, S))
-    own = np.load(f'{HERE}/clean_crops.npy', mmap_mode='r')
-    rows = {r['file']: r for r in csv.DictReader(open(f'{RPU}/sources.csv', encoding='utf8'))}
+    own = np.load(f'{HERE}/clean_crops.npy', mmap_mode='r') if os.path.exists(f'{HERE}/clean_crops.npy') else None
+    base = np.load(f'{HERE}/base_rgb.npy', mmap_mode='r') if os.path.exists(f'{HERE}/base_rgb.npy') else None
+    rows = {r['file']: r for r in csv.DictReader(open(f'{RPU}/sources.csv', encoding='utf8'))} if os.path.exists(f'{RPU}/sources.csv') else {}
     for j, m in enumerate(kept):
         k = m['key']
-        if k[0] == 'cube':
+        if k[0] == 'base':
+            c = np.asarray(base[k[1]]).astype(np.float32)
+        elif k[0] == 'cube':
             c = np.asarray(np.load(f'{CUBE}/crops_{k[1]}.npy', mmap_mode='r')[k[2]]).astype(np.float32) / 65534.0
         elif k[0] == 'own':
             p = np.asarray(own[k[1]]).astype(np.float32)

@@ -63,6 +63,8 @@ python training/export_cf.py cf3 --version 0.3.0
 python training/compare_cf.py <export dirs> scene_001
 ```
 
+**Upgrading from 0.3.0:** keep 0.3.0's gated training set as `train/base_rgb.npy` + `base_rgb.json`. `build_mixed.py` feeds it back in as candidates, so you only add new material: an inventory of new raws only, new raw.pixls.us files (the fetcher skips the ones in `rpu/sources.csv`), or the remaining Cube++ zips (`cube_fetch.py` skips zips that have a `done_k` flag). To warm-start from 0.3.0's weights, use `runs/cf3/best.pt`.
+
 `fetch_rpu.py`, `cube_fetch.py` and `export_cf.py` use Chromaforge's `lc-denoise-rawdump` helper, built from a Chromaforge checkout into `train/rawdump-target`. `compare_cf.py` uses `tools/cf-bench` for the built-in denoiser.
 
 ## Credits
